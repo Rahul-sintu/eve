@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive School Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+        }
+
+        .navbar-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            list-style: none;
+        }
+
+        .navbar-right a:hover {
+            text-decoration: underline;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #00509e;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background-image: url(scl14.jfif);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .about-photo {
+            max-width: 300px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .about-content {
+            max-width: 600px;
+        }
+
+        .cards-section {
+            padding: 20px;
+            background-color: rgb(157, 209, 217);
+        }
+
+        .cards-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cards-section .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cards-section .card {
+            flex: 1;
+            max-width: 18%;
+            background: #f4f4f4;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .cards-section .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .cards-section .card-content {
+            padding: 10px;
+        }
+
+        .cards-section .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .admission-section {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .admission-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admission-cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .admission-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .admission-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .contact-section .contact-form,
+        .contact-section .map-container {
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #43e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.3s;
+            border: 2px solid #50e62e;
+        }
+
+        .contact-form:hover {
+            border-color: #003366;
+        }
+
+        .contact-form label {
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e92121;
+            background-color: #bcc8bc;
+            border-radius: 10px 0 10px 0;
+        }
+
+        .contact-form button {
+            background-color: navy;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: darkblue;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        .footer {
+            background-color: #003366;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-location,
+        .footer-links,
+        .footer-newsletter {
+            margin: 10px;
+            flex: 1;
+        }
+
+        .footer-location h3,
+        .footer-links h3,
+        .footer-newsletter h3 {
+            margin: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin: 5px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-newsletter input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: calc(100% - 110px);
+            margin-right: 10px;
+        }
+
+        .footer-newsletter button {
+            background-color: navy;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer-newsletter button:hover {
+            background-color: darkblue;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-right {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .about-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .about-photo {
+                margin: 0 0 20px 0;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .cards-section {
+                flex-direction: column;
+                
+            }
+
+            .cards-section .card-container {
+                flex-direction: column;
+                align-items: center;
+                background-color: rgb(157, 209, 217);
+            }
+
+            .cards-section .card {
+                max-width: 100%;
+                flex: 1 0 100%;
+            }
+
+            .admission-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form,
+            .map-container {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .map-container iframe {
+                height: 400px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="bimg.jfif" alt="School Logo" class="logo">
+        <button class="hamburger" id="hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="navbar-right">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#admission">Admission</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#programs">Programs</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#admission">Admission</a>
+            <a href="#contact">Contact</a>
+            <a href="#programs">Programs</a>
+        </div>
+    </nav>
+
+    <div class="hero-image"></div>
+
+    <div class="about-section" id="about">
+        <img src="scl1.jfif" alt="About Us Photo" class="about-photo">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>
+                Welcome to our school! We are dedicated to providing quality education and fostering a nurturing
+                environment for our students. Our curriculum is designed to challenge and inspire students to achieve
+                their full potential. With a team of passionate educators and state-of-the-art facilities, we aim to
+                equip our students with the skills and knowledge they need to succeed in the future. Join us in our
+                journey to excellence.
+            </p>
+        </div>
+    </div>
+
+    <div class="cards-section" id="programs">
+        <h2>Programs</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="p1.jfif" alt="Program Photo">
+                <div class="card-content">
+                    <h3>Labrotory</h3>
+                    <p>A laboratory is a controlled environment designed for scientific research, experiments, and analysis.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="p2.jfif" alt="Program Photo">
+                <div class="card-content">
+                    <h3>Library</h3>
+                    <p>It serves as a resource center for reading, research, and study, providing a quiet environment for learning and exploration.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="p3.jpg" alt="Program Photo">
+                <div class="card-content">
+                    <h3>Event Ceremony</h3>
+                    <p>An event ceremony is a formal gathering designed to mark or celebrate a significant occasion, achievement, or milestone.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="p4.jfif" alt="Program Photo">
+                <div class="card-content">
+                    <h3>sports</h3>
+                    <p>Sports are physical activities or games that involve competition, skill, and physical exertion.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="p5.jfif" alt="Program Photo">
+                <div class="card-content">
+                    <h3>class room</h3>
+                    <p>A classroom serves as a setting for instruction, discussion, and interaction between teachers and students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admission-section" id="admission">
+        <h2>Admission</h2>
+        <div class="admission-cards">
+            <div class="admission-card">
+                <h3>Regular Admission</h3>
+                <ul>
+                    <li>Detail 1</li>
+                    <li>Detail 2</li>
+                </ul>
+            </div>
+            <div class="admission-card">
+                <h3>Rolling Admission</h3>
+                <ul>
+                    <li>Detail 1</li>
+                    <li>Detail 2</li>
+                </ul>
+            </div>
+            <div class="admission-card">
+                <h3>Open Admissions</h3>
+                <ul>
+                    <li>Detail 1</li>
+                    <li>Detail 2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Full Name">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Your Phone Number">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228350.54125642538!2d85.78671744450145!3d20.296058271847758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a190e804f1eb8b7%3A0x8f3d2c5f74b4d262!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1689050266366!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.2117724311843!2d85.80443407506128!3d20.332868281147956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19098a04509cd9%3A0xe91cf2edc1314beb!2sBriskode%20technology%20Pvt.Ltd!5e0!3m2!1sen!2sin!4v1723470454289!5m2!1sen!2sin" width="150" height="170" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+        <div class="footer-location">
+            <h3>Location</h3>
+            <p>123 School Road, Bhubaneswar, Odisha</p>
+            <i class='fas fa-map-marker-alt' style='font-size:48px;color:red'></i>
+        </div>
+        <div class="footer-links">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academic-calendar">Academic Calendar</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for the latest updates and news.</p>
+            <input type="email" placeholder="Enter Your Email">
+            <button type="submit">Subscribe</button>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger-menu').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
